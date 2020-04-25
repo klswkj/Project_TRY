@@ -40,7 +40,7 @@ namespace Bind
 	{
 		INFOMAN_NOHR( gfx );
 		const float* data = factors ? factors->data() : nullptr;
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->OMSetBlendState( pBlender.Get(),data,0xFFFFFFFFu ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->OMSetBlendState( pBlender.Get(),data,0xFFFFFFFFu ) );
 	}
 
 	void Blender::SetFactor( float factor ) noxnd

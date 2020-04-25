@@ -459,14 +459,14 @@ LRESULT Window::HandleMsg( HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam ) noex
 
 
 // Window Exception Stuff
-std::string Window::Exception::TranslateErrorCode( HRESULT hr ) noexcept
+std::string Window::Exception::TranslateErrorCode( HRESULT hardwareResult ) noexcept
 {
 	char* pMsgBuf = nullptr;
 	// windows will allocate memory for err string and make our pointer point to it
 	const DWORD nMsgLen = FormatMessage(
 		FORMAT_MESSAGE_ALLOCATE_BUFFER |
 		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-		nullptr,hr,MAKELANGID( LANG_NEUTRAL,SUBLANG_DEFAULT ),
+		nullptr,hardwareResult,MAKELANGID( LANG_NEUTRAL,SUBLANG_DEFAULT ),
 		reinterpret_cast<LPSTR>(&pMsgBuf),0,nullptr
 	);
 	// 0 string length returned indicates a failure
@@ -482,10 +482,10 @@ std::string Window::Exception::TranslateErrorCode( HRESULT hr ) noexcept
 }
 
 
-Window::HrException::HrException( int line,const char* file,HRESULT hr ) noexcept
+Window::HrException::HrException( int line,const char* file,HRESULT hardwareResult ) noexcept
 	:
 	Exception( line,file ),
-	hr( hr )
+	hardwareResult( hardwareResult )
 {}
 
 const char* Window::HrException::what() const noexcept
@@ -507,12 +507,12 @@ const char* Window::HrException::GetType() const noexcept
 
 HRESULT Window::HrException::GetErrorCode() const noexcept
 {
-	return hr;
+	return hardwareResult;
 }
 
 std::string Window::HrException::GetErrorDescription() const noexcept
 {
-	return Exception::TranslateErrorCode( hr );
+	return Exception::TranslateErrorCode( hardwareResult );
 }
 
 const char* Window::NoGfxException::GetType() const noexcept

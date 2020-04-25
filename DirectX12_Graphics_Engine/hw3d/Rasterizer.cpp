@@ -19,7 +19,7 @@ namespace Bind
 	void Rasterizer::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->RSSetState( pRasterizer.Get() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->RSSetState( pRasterizer.Get() ) );
 	}
 	
 	std::shared_ptr<Rasterizer> Rasterizer::Resolve( Graphics& gfx,bool twoSided )

@@ -34,7 +34,7 @@ namespace Bind
 	void DepthStencil::BindAsBuffer( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->OMSetRenderTargets( 0,nullptr,pDepthStencilView.Get() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->OMSetRenderTargets( 0,nullptr,pDepthStencilView.Get() ) );
 	}
 	
 	void DepthStencil::BindAsBuffer( Graphics& gfx,BufferResource* renderTarget ) noxnd
@@ -50,7 +50,7 @@ namespace Bind
 
 	void DepthStencil::Clear( Graphics& gfx ) noxnd
 	{
-		GetContext( gfx )->ClearDepthStencilView( pDepthStencilView.Get(),D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,1.0f,0u );
+		GetCommandList( gfx )->ClearDepthStencilView( pDepthStencilView.Get(),D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,1.0f,0u );
 	}
 	
 
@@ -82,7 +82,7 @@ namespace Bind
 	void ShaderInputDepthStencil::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetShaderResources( slot,1u,pShaderResourceView.GetAddressOf() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetShaderResources( slot,1u,pShaderResourceView.GetAddressOf() ) );
 	}
 
 

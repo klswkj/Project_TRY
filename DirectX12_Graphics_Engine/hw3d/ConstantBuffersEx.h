@@ -15,13 +15,13 @@ namespace Bind
 			INFOMAN( gfx );
 
 			D3D11_MAPPED_SUBRESOURCE msr;
-			GFX_THROW_INFO( GetContext( gfx )->Map(
+			GFX_THROW_INFO( GetCommandList( gfx )->Map(
 				pConstantBuffer.Get(),0u,
 				D3D11_MAP_WRITE_DISCARD,0u,
 				&msr
 			) );
 			memcpy( msr.pData,buf.GetData(),buf.GetSizeInBytes() );
-			GetContext( gfx )->Unmap( pConstantBuffer.Get(),0u );
+			GetCommandList( gfx )->Unmap( pConstantBuffer.Get(),0u );
 		}
 		// this exists for validation of the update buffer layout
 		// reason why it's not getbuffer is becasue nocache doesn't store buffer
@@ -64,7 +64,7 @@ namespace Bind
 		void Bind( Graphics& gfx ) noxnd override
 		{
 			INFOMAN_NOHR( gfx );
-			GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
+			GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
 		}
 	};
 
@@ -75,7 +75,7 @@ namespace Bind
 		void Bind( Graphics& gfx ) noxnd override
 		{
 			INFOMAN_NOHR( gfx );
-			GFX_THROW_INFO_ONLY( GetContext( gfx )->VSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
+			GFX_THROW_INFO_ONLY( GetCommandList( gfx )->VSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
 		}
 	};
 

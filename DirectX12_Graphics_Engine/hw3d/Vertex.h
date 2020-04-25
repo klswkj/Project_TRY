@@ -137,7 +137,7 @@ namespace Dvtx
 			size_t Size() const noxnd;
 			static constexpr size_t SizeOf( ElementType type ) noxnd;
 			ElementType GetType() const noexcept;
-			D3D11_INPUT_ELEMENT_DESC GetDesc() const noxnd;
+			D3D12_INPUT_ELEMENT_DESC GetDesc() const noxnd;
 			const char* GetCode() const noexcept;
 		private:
 			ElementType type;
@@ -161,7 +161,7 @@ namespace Dvtx
 		VertexLayout& Append( ElementType type ) noxnd;
 		size_t Size() const noxnd;
 		size_t GetElementCount() const noexcept;
-		std::vector<D3D11_INPUT_ELEMENT_DESC> GetD3DLayout() const noxnd;
+		std::vector<D3D12_INPUT_ELEMENT_DESC> GetD3DLayout() const noxnd;
 		std::string GetCode() const noxnd;
 		bool Has( ElementType type ) const noexcept;
 	private:

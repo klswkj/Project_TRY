@@ -32,7 +32,7 @@ namespace Bind
 	void InputLayout::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->IASetInputLayout( pInputLayout.Get() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->IASetInputLayout( pInputLayout.Get() ) );
 	}
 	std::shared_ptr<InputLayout> InputLayout::Resolve( Graphics& gfx,
 			const Dvtx::VertexLayout& layout,const VertexShader& vs )

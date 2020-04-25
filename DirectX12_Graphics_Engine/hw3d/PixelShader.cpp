@@ -19,7 +19,7 @@ namespace Bind
 	void PixelShader::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetShader( pPixelShader.Get(),nullptr,0u ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetShader( pPixelShader.Get(),nullptr,0u ) );
 	}
 	std::shared_ptr<PixelShader> PixelShader::Resolve( Graphics& gfx,const std::string& path )
 	{

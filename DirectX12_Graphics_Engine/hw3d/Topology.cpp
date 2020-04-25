@@ -12,7 +12,7 @@ namespace Bind
 	void Topology::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->IASetPrimitiveTopology( type ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->IASetPrimitiveTopology( type ) );
 	}
 	std::shared_ptr<Topology> Topology::Resolve( Graphics& gfx,D3D11_PRIMITIVE_TOPOLOGY type )
 	{

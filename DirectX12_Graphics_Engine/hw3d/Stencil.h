@@ -20,42 +20,43 @@ namespace Bind
 			:
 			mode( mode )
 		{
-			D3D11_DEPTH_STENCIL_DESC dsDesc = CD3D11_DEPTH_STENCIL_DESC{ CD3D11_DEFAULT{} };
+			// D3D11_DEPTH_STENCIL_DESC dsDesc = CD3D11_DEPTH_STENCIL_DESC{ CD3D11_DEFAULT{} };
+			D3D12_GRAPHICS_PIPELINE_STATE_DESC PSODescriptor = {};
 
 			if( mode == Mode::Write )
 			{
-				dsDesc.DepthEnable = FALSE;
-				dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
-				dsDesc.StencilEnable = TRUE;
-				dsDesc.StencilWriteMask = 0xFF;
-				dsDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
-				dsDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_REPLACE;
+				PSODescriptor.DepthStencilState.DepthEnable = FALSE;
+				PSODescriptor.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
+				PSODescriptor.DepthStencilState.StencilEnable = TRUE;
+				PSODescriptor.DepthStencilState.StencilWriteMask = 0xFF;
+				PSODescriptor.DepthStencilState.FrontFace.StencilFunc = D3D12_COMPARISON_FUNC_ALWAYS;
+				PSODescriptor.DepthStencilState.FrontFace.StencilPassOp = D3D12_STENCIL_OP_REPLACE;
 			}
 			else if( mode == Mode::Mask )
 			{
-				dsDesc.DepthEnable = FALSE;
-				dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
-				dsDesc.StencilEnable = TRUE;
-				dsDesc.StencilReadMask = 0xFF;
-				dsDesc.FrontFace.StencilFunc = D3D11_COMPARISON_NOT_EQUAL;
-				dsDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+				PSODescriptor.DepthStencilState.DepthEnable = FALSE;
+				PSODescriptor.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
+				PSODescriptor.DepthStencilState.StencilEnable = TRUE;
+				PSODescriptor.DepthStencilState.StencilWriteMask = 0xFF;
+				PSODescriptor.DepthStencilState.FrontFace.StencilFunc = D3D12_COMPARISON_FUNC_NOT_EQUAL;
+				PSODescriptor.DepthStencilState.FrontFace.StencilPassOp = D3D12_STENCIL_OP_KEEP;
 			}
 			else if( mode == Mode::DepthOff )
 			{
-				dsDesc.DepthEnable = FALSE;
-				dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+				PSODescriptor.DepthStencilState.DepthEnable = FALSE;
+				PSODescriptor.DepthStencilState.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
 			}
 			else if( mode == Mode::DepthReversed )
 			{
-				dsDesc.DepthFunc = D3D11_COMPARISON_GREATER;
+				PSODescriptor.DepthStencilState.DepthFunc = D3D12_COMPARISON_FUNC_GREATER;
 			}
 
-			GetDevice( gfx )->CreateDepthStencilState( &dsDesc,&pStencil );
+			GetDevice( gfx )->CreateGraphicsPipelineState( &PSODescriptor, IID_PPV_ARGS(&pStencil) );
 		}
 		void Bind( Graphics& gfx ) noxnd override
 		{
 			INFOMAN_NOHR( gfx );
-			GFX_THROW_INFO_ONLY( GetContext( gfx )->OMSetDepthStencilState( pStencil.Get(),0xFF ) );
+			GFX_THROW_INFO_ONLY( GetCommandList( gfx )->OMSetDepthStencilState( pStencil.Get(),0xFF ) );
 		}
 		static std::shared_ptr<Stencil> Resolve( Graphics& gfx,Mode mode )
 		{
@@ -87,6 +88,6 @@ namespace Bind
 		}
 	private:
 		Mode mode;
-		Microsoft::WRL::ComPtr<ID3D11DepthStencilState> pStencil;
+		Microsoft::WRL::ComPtr<ID3D12PipelineState> pStencil;
 	};
 }

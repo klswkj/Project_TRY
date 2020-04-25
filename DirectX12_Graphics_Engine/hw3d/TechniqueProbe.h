@@ -16,18 +16,18 @@ public:
 	void SetTechnique( Technique* pTech_in )
 	{
 		pTech = pTech_in;
-		techIdx++;
+		++techIdx;
 		OnSetTechnique();
 	}
 	void SetStep( Step* pStep_in )
 	{
 		pStep = pStep_in;
-		stepIdx++;
+		++stepIdx;
 		OnSetStep();
 	}
 	bool VisitBuffer( Dcb::Buffer& buf )
 	{
-		bufIdx++;
+		++bufIdx;
 		return OnVisitBuffer( buf );
 	}
 protected:

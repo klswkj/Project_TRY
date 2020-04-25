@@ -107,13 +107,13 @@ public:
 	class Exception : public LogMessage
 	{
 	public:
-		Exception( int line,const char* file,std::string note,std::optional<HRESULT> hr = {} ) noexcept;
-		Exception( int line,const char* file,std::string filename,std::string note,std::optional<HRESULT> hr = {} ) noexcept;
+		Exception( int line,const char* file,std::string note,std::optional<HRESULT> hardwareResult = {} ) noexcept;
+		Exception( int line,const char* file,std::string filename,std::string note,std::optional<HRESULT> hardwareResult = {} ) noexcept;
 		const char* what() const noexcept override;
 		const char* GetType() const noexcept override;
 		const std::string& GetNote() const noexcept;
 	private:
-		std::optional<HRESULT> hr;
+		std::optional<HRESULT> hardwareResult;
 		std::string note;
 	};
 public:

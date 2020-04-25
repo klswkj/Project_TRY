@@ -31,7 +31,7 @@ namespace Bind
 	void Sampler::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetSamplers( 0,1,pSampler.GetAddressOf() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetSamplers( 0,1,pSampler.GetAddressOf() ) );
 	}
 	std::shared_ptr<Sampler> Sampler::Resolve( Graphics& gfx,Type type,bool reflect )
 	{

@@ -55,7 +55,8 @@ Camera* CameraContainer::operator->()
 }
 
 CameraContainer::~CameraContainer()
-{}
+{
+}
 
 void CameraContainer::LinkTechniques( Rgph::RenderGraph& rg )
 {

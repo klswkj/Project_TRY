@@ -83,7 +83,7 @@ namespace Bind
 	void RenderTarget::BindAsBuffer( Graphics& gfx,ID3D11DepthStencilView* pDepthStencilView ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->OMSetRenderTargets( 1,pTargetView.GetAddressOf(),pDepthStencilView ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->OMSetRenderTargets( 1,pTargetView.GetAddressOf(),pDepthStencilView ) );
 
 		// configure viewport
 		D3D11_VIEWPORT vp;
@@ -93,13 +93,13 @@ namespace Bind
 		vp.MaxDepth = 1.0f;
 		vp.TopLeftX = 0.0f;
 		vp.TopLeftY = 0.0f;
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->RSSetViewports( 1u,&vp ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->RSSetViewports( 1u,&vp ) );
 	}
 
 	void RenderTarget::Clear( Graphics& gfx,const std::array<float,4>& color ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->ClearRenderTargetView( pTargetView.Get(),color.data() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->ClearRenderTargetView( pTargetView.Get(),color.data() ) );
 	}
 
 	void RenderTarget::Clear( Graphics& gfx ) noxnd
@@ -160,14 +160,14 @@ namespace Bind
 		) );
 
 		// copy texture contents
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->CopyResource( pTexTemp.Get(),pTexSource.Get() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->CopyResource( pTexTemp.Get(),pTexSource.Get() ) );
 
 		// create Surface and copy from temp texture to it
 		const auto width = GetWidth();
 		const auto height = GetHeight();
 		Surface s{ width,height };
 		D3D11_MAPPED_SUBRESOURCE msr = {};
-		GFX_THROW_INFO( GetContext( gfx )->Map( pTexTemp.Get(),0,D3D11_MAP::D3D11_MAP_READ,0,&msr ) );
+		GFX_THROW_INFO( GetCommandList( gfx )->Map( pTexTemp.Get(),0,D3D11_MAP::D3D11_MAP_READ,0,&msr ) );
 		auto pSrcBytes = static_cast<const char*>(msr.pData);
 		for( unsigned int y = 0; y < height; y++ )
 		{
@@ -177,7 +177,7 @@ namespace Bind
 				s.PutPixel( x,y,*(pSrcRow + x) );
 			}
 		}
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->Unmap( pTexTemp.Get(),0 ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->Unmap( pTexTemp.Get(),0 ) );
 
 		return s;
 	}
@@ -185,7 +185,7 @@ namespace Bind
 	void ShaderInputRenderTarget::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetShaderResources( slot,1,pShaderResourceView.GetAddressOf() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetShaderResources( slot,1,pShaderResourceView.GetAddressOf() ) );
 	}
 	
 

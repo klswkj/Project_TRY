@@ -2,14 +2,14 @@
 #include <stdexcept>
 
 
-ID3D11DeviceContext* GraphicsResource::GetContext( Graphics& gfx ) noexcept
+ID3D12CommandList* GraphicsResource::GetCommandList( Graphics& gfx ) noexcept
 {
-	return gfx.pContext.Get();
+	return gfx.pCommandList.Get();
 }
 
-ID3D11Device* GraphicsResource::GetDevice( Graphics& gfx ) noexcept
+ID3D12Device* GraphicsResource::GetDevice( Graphics& gfx ) noexcept
 {
-	return gfx.pDevice.Get();
+	return gfx.p12Device.Get();
 }
 
 DxgiInfoManager& GraphicsResource::GetInfoManager( Graphics& gfx )

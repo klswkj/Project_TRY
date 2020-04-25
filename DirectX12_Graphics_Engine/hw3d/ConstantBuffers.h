@@ -14,13 +14,13 @@ namespace Bind
 			INFOMAN( gfx );
 
 			D3D11_MAPPED_SUBRESOURCE msr;
-			GFX_THROW_INFO( GetContext( gfx )->Map(
+			GFX_THROW_INFO( GetCommandList( gfx )->Map(
 				pConstantBuffer.Get(),0u,
 				D3D11_MAP_WRITE_DISCARD,0u,
 				&msr
 			) );
 			memcpy( msr.pData,&consts,sizeof( consts ) );
-			GetContext( gfx )->Unmap( pConstantBuffer.Get(),0u );
+			GetCommandList( gfx )->Unmap( pConstantBuffer.Get(),0u );
 		}
 		ConstantBuffer( Graphics& gfx,const C& consts,UINT slot = 0u )
 			:
@@ -66,13 +66,13 @@ namespace Bind
 		using ConstantBuffer<C>::pConstantBuffer;
 		using ConstantBuffer<C>::slot;
 		using ConstantBuffer<C>::GetInfoManager;
-		using Bindable::GetContext;
+		using Bindable::GetCommandList;
 	public:
 		using ConstantBuffer<C>::ConstantBuffer;
 		void Bind( Graphics& gfx ) noxnd override
 		{
 			INFOMAN_NOHR( gfx );
-			GFX_THROW_INFO_ONLY( GetContext( gfx )->VSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
+			GFX_THROW_INFO_ONLY( GetCommandList( gfx )->VSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
 		}
 		static std::shared_ptr<VertexConstantBuffer> Resolve( Graphics& gfx,const C& consts,UINT slot = 0 )
 		{
@@ -103,13 +103,13 @@ namespace Bind
 		using ConstantBuffer<C>::pConstantBuffer;
 		using ConstantBuffer<C>::slot;
 		using ConstantBuffer<C>::GetInfoManager;
-		using Bindable::GetContext;
+		using Bindable::GetCommandList;
 	public:
 		using ConstantBuffer<C>::ConstantBuffer;
 		void Bind( Graphics& gfx ) noxnd override
 		{
 			INFOMAN_NOHR( gfx );
-			GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
+			GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetConstantBuffers( slot,1u,pConstantBuffer.GetAddressOf() ) );
 		}
 		static std::shared_ptr<PixelConstantBuffer> Resolve( Graphics& gfx,const C& consts,UINT slot = 0 )
 		{

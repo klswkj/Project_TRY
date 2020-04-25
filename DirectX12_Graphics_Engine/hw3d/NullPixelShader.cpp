@@ -11,7 +11,7 @@ namespace Bind
 	void NullPixelShader::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetShader( nullptr,nullptr,0u ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetShader( nullptr,nullptr,0u ) );
 	}
 	std::shared_ptr<NullPixelShader> NullPixelShader::Resolve( Graphics& gfx )
 	{

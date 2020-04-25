@@ -37,7 +37,7 @@ namespace Bind
 		) );
 
 		// write image data into top mip level
-		GetContext( gfx )->UpdateSubresource(
+		GetCommandList( gfx )->UpdateSubresource(
 			pTexture.Get(),0u,nullptr,s.GetBufferPtrConst(),s.GetWidth() * sizeof( Surface::Color ),0u
 		);
 
@@ -52,13 +52,13 @@ namespace Bind
 		) );
 
 		// generate the mip chain using the gpu rendering pipeline
-		GetContext( gfx )->GenerateMips( pTextureView.Get() );
+		GetCommandList( gfx )->GenerateMips( pTextureView.Get() );
 	}
 
 	void Texture::Bind( Graphics& gfx ) noxnd
 	{
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->PSSetShaderResources( slot,1u,pTextureView.GetAddressOf() ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->PSSetShaderResources( slot,1u,pTextureView.GetAddressOf() ) );
 	}
 	std::shared_ptr<Texture> Texture::Resolve( Graphics& gfx,const std::string& path,UINT slot )
 	{

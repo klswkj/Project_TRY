@@ -36,7 +36,7 @@ namespace Bind
 	{
 		const UINT offset = 0u;
 		INFOMAN_NOHR( gfx );
-		GFX_THROW_INFO_ONLY( GetContext( gfx )->IASetVertexBuffers( 0u,1u,pVertexBuffer.GetAddressOf(),&stride,&offset ) );
+		GFX_THROW_INFO_ONLY( GetCommandList( gfx )->IASetVertexBuffers( 0u,1u,pVertexBuffer.GetAddressOf(),&stride,&offset ) );
 	}
 	std::shared_ptr<VertexBuffer> VertexBuffer::Resolve( Graphics& gfx,const std::string& tag,
 		const Dvtx::VertexBuffer& vbuf )
