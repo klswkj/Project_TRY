@@ -313,7 +313,7 @@
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="ChiliTimer.h" />
     <ClInclude Include="StringUtil.h" />
-    <ClInclude Include="ChiliWin.h" />
+    <ClInclude Include="WinDefine.h" />
     <ClInclude Include="ChiliWRL.h" />
     <ClInclude Include="ChiliXM.h" />
     <ClInclude Include="Color.h" />

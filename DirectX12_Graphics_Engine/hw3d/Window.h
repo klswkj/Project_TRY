@@ -18,7 +18,7 @@
 *	along with The Chili Direct3D Engine.  If not, see <http://www.gnu.org/licenses/>.    *
 ******************************************************************************************/
 #pragma once
-#include "ChiliWin.h"
+#include "WinDefine.h"
 #include "ChiliException.h"
 #include "Keyboard.h"
 #include "Mouse.h"

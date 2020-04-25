@@ -1,5 +1,5 @@
 #pragma once
-#include "ChiliWin.h"
+#include "WinDefine.h"
 #include "ChiliWRL.h"
 #include <vector>
 #include <dxgidebug.h>
