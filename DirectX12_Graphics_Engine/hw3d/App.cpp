@@ -14,7 +14,7 @@ namespace dx = DirectX;
 App::App( const std::string& commandLine )
 	:
 	commandLine( commandLine ),
-	wnd( 1280,720,"The Donkey Fart Box" ),
+	wnd( 1280,720,"Directx12_Graphics_Engine" ),
 	scriptCommander( TokenizeQuoted( commandLine ) ),
 	light( wnd.Gfx() )
 {

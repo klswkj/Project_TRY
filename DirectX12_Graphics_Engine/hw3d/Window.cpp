@@ -1,6 +1,6 @@
 #include "Window.h"
 #include <sstream>
-#include "resource.h"
+#include "ApplicationIconResource.h"
 #include "WindowsThrowMacros.h"
 #include "imgui/imgui_impl_win32.h"
 
@@ -502,7 +502,7 @@ const char* Window::HrException::what() const noexcept
 
 const char* Window::HrException::GetType() const noexcept
 {
-	return "Chili Window Exception";
+	return "Window Exception";
 }
 
 HRESULT Window::HrException::GetErrorCode() const noexcept
@@ -517,5 +517,5 @@ std::string Window::HrException::GetErrorDescription() const noexcept
 
 const char* Window::NoGfxException::GetType() const noexcept
 {
-	return "Chili Window Exception [No Graphics]";
+	return "Window Exception [No Graphics Engine]";
 }
