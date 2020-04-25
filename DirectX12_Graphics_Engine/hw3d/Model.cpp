@@ -2,11 +2,11 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include "ModelException.h"
+#include "ModelLogMessage.h"
 #include "Node.h"
 #include "Mesh.h"
 #include "Material.h"
-#include "ChiliXM.h"
+#include "XMath.h"
 
 namespace dx = DirectX;
 
@@ -23,7 +23,7 @@ Model::Model( Graphics& gfx,const std::string& pathString,const float scale )
 
 	if( pScene == nullptr )
 	{
-		throw ModelException( __LINE__,__FILE__,imp.GetErrorString() );
+		throw ModelLogMessage( __LINE__,__FILE__,imp.GetErrorString() );
 	}
 
 	// parse materials

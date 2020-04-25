@@ -20,7 +20,7 @@
 ******************************************************************************************/
 #pragma once
 #include "WinDefine.h"
-#include "ChiliException.h"
+#include "LogMessage.h"
 #include <string>
 #include <optional>
 #include "ConditionalNoexcept.h"
@@ -104,7 +104,7 @@ public:
 		}
 	};
 public:
-	class Exception : public ChiliException
+	class Exception : public LogMessage
 	{
 	public:
 		Exception( int line,const char* file,std::string note,std::optional<HRESULT> hr = {} ) noexcept;

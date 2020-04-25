@@ -19,7 +19,7 @@
 ******************************************************************************************/
 #pragma once
 #include "WinDefine.h"
-#include "ChiliException.h"
+#include "LogMessage.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
@@ -30,9 +30,9 @@
 class Window
 {
 public:
-	class Exception : public ChiliException
+	class Exception : public LogMessage
 	{
-		using ChiliException::ChiliException;
+		using LogMessage::LogMessage;
 	public:
 		static std::string TranslateErrorCode( HRESULT hr ) noexcept;
 	};

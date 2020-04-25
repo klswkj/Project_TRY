@@ -1,10 +1,8 @@
-#include "ChiliXM.h"
-
-namespace dx = DirectX;
+#include "XMath.h"
 
 DirectX::XMFLOAT3 ExtractEulerAngles( const DirectX::XMFLOAT4X4& mat )
 {
-	dx::XMFLOAT3 euler;
+	DirectX::XMFLOAT3 euler;
 	
 	euler.x = asinf( -mat._32 );                  // Pitch
 	if( cosf( euler.x ) > 0.0001 )                // Not at poles

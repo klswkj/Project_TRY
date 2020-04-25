@@ -21,10 +21,10 @@
 #include <exception>
 #include <string>
 
-class ChiliException : public std::exception
+class LogMessage : public std::exception
 {
 public:
-	ChiliException( int line,const char* file ) noexcept;
+	LogMessage( int line,const char* file ) noexcept;
 	const char* what() const noexcept override;
 	virtual const char* GetType() const noexcept;
 	int GetLine() const noexcept;

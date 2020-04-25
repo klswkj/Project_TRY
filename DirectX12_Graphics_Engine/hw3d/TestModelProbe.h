@@ -9,7 +9,7 @@
 #include <DirectXMath.h>
 #include <string>
 #include <unordered_map>
-#include "ChiliXM.h"
+#include "XMath.h"
 
 namespace dx = DirectX;
 

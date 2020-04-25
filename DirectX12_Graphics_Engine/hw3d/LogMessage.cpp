@@ -1,14 +1,14 @@
-#include "ChiliException.h"
+#include "LogMessage.h"
 #include <sstream>
 
 
-ChiliException::ChiliException( int line,const char* file ) noexcept
+LogMessage::LogMessage( int line,const char* file ) noexcept
 	:
 	line( line ),
 	file( file )
 {}
 
-const char* ChiliException::what() const noexcept
+const char* LogMessage::what() const noexcept
 {
 	std::ostringstream oss;
 	oss << GetType() << std::endl
@@ -17,22 +17,22 @@ const char* ChiliException::what() const noexcept
 	return whatBuffer.c_str();
 }
 
-const char* ChiliException::GetType() const noexcept
+const char* LogMessage::GetType() const noexcept
 {
 	return "Chili Exception";
 }
 
-int ChiliException::GetLine() const noexcept
+int LogMessage::GetLine() const noexcept
 {
 	return line;
 }
 
-const std::string& ChiliException::GetFile() const noexcept
+const std::string& LogMessage::GetFile() const noexcept
 {
 	return file;
 }
 
-std::string ChiliException::GetOriginString() const noexcept
+std::string LogMessage::GetOriginString() const noexcept
 {
 	std::ostringstream oss;
 	oss << "[File] " << file << std::endl

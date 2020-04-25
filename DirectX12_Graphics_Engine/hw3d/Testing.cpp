@@ -10,7 +10,7 @@
 #include "Material.h"
 #include "Mesh.h"
 #include "Testing.h"
-#include "ChiliXM.h"
+#include "XMath.h"
 #include <algorithm>
 #include <array>
 #include "BindableCommon.h"

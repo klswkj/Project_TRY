@@ -1,6 +1,6 @@
 #pragma once
 #include "Window.h"
-#include "ChiliTimer.h"
+#include "Timer.h"
 #include "ImguiManager.h"
 #include "CameraContainer.h"
 #include "PointLight.h"
@@ -28,7 +28,7 @@ private:
 	Window wnd;
 	ScriptCommander scriptCommander;
 	Rgph::BlurOutlineRenderGraph rg{ wnd.Gfx() };
-	ChiliTimer timer;
+	Timer timer;
 	float speed_factor = 1.0f;
 	CameraContainer cameras;
 	PointLight light;

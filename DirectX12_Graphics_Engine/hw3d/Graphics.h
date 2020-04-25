@@ -1,6 +1,6 @@
 #pragma once
 #include "WinDefine.h"
-#include "ChiliException.h"
+#include "LogMessage.h"
 #include <d3d11.h>
 #include "ChiliWRL.h"
 #include <vector>
@@ -21,9 +21,9 @@ class Graphics
 {
 	friend class GraphicsResource;
 public:
-	class Exception : public ChiliException
+	class Exception : public LogMessage
 	{
-		using ChiliException::ChiliException;
+		using LogMessage::LogMessage;
 	};
 	class HrException : public Exception
 	{

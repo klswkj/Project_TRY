@@ -1,10 +1,10 @@
 #pragma once
-#include "ChiliException.h"
+#include "LogMessage.h"
 
-class ModelException : public ChiliException
+class ModelLogMessage : public LogMessage
 {
 public:
-	ModelException( int line,const char* file,std::string note ) noexcept;
+	ModelLogMessage( int line,const char* file,std::string note ) noexcept;
 	const char* what() const noexcept override;
 	const char* GetType() const noexcept override;
 	const std::string& GetNote() const noexcept;
