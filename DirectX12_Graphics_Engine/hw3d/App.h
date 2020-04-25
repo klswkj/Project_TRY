@@ -8,7 +8,7 @@
 #include "Model.h"
 #include "ScriptCommander.h"
 #include "BlurOutlineRenderGraph.h"
-#include "ChiliMath.h"
+#include "MathHelper.h"
 
 class App
 {

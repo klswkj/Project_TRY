@@ -189,9 +189,6 @@
     <ClCompile Include="Rasterizer.cpp">
       <Filter>Source Files\Bindable</Filter>
     </ClCompile>
-    <ClCompile Include="ChiliUtil.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScriptCommander.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -297,6 +294,9 @@
     <ClCompile Include="Frustum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="StringUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowsMessageMap.h">
@@ -373,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>Header Files\Geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="ChiliMath.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Surface.h">
       <Filter>Header Files</Filter>
@@ -465,9 +462,6 @@
       <Filter>Header Files\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="json.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChiliUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScriptCommander.h">
@@ -615,6 +609,12 @@
       <Filter>Header Files\Jobber\Passlib</Filter>
     </ClInclude>
     <ClInclude Include="ApplicationIconResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

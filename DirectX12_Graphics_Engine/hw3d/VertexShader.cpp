@@ -2,7 +2,7 @@
 #include "GraphicsThrowMacros.h"
 #include "BindableCodex.h"
 #include <typeinfo>
-#include "ChiliUtil.h"
+#include "StringUtil.h"
 
 namespace Bind
 {

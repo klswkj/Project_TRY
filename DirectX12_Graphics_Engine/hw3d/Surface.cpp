@@ -24,7 +24,7 @@
 #include <cassert>
 #include <sstream>
 #include <filesystem>
-#include "ChiliUtil.h"
+#include "StringUtil.h"
 
 
 Surface::Surface( unsigned int width,unsigned int height )

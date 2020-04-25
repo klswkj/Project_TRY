@@ -1,7 +1,7 @@
 #include "Sink.h"
 #include "Source.h"
 #include "RenderGraphCompileException.h"
-#include "ChiliUtil.h"
+#include "StringUtil.h"
 #include "Bindable.h"
 #include "BufferResource.h"
 #include <sstream>

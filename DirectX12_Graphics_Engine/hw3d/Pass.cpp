@@ -3,7 +3,7 @@
 #include "RenderTarget.h"
 #include "DepthStencil.h"
 #include <sstream>
-#include "ChiliUtil.h"
+#include "StringUtil.h"
 #include "Sink.h"
 #include "Source.h"
 
