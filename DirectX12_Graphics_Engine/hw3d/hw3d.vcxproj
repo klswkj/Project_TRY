@@ -342,6 +342,7 @@
     <ClInclude Include="ModelProbe.h" />
     <ClInclude Include="NullPixelShader.h" />
     <ClInclude Include="Pass.h" />
+    <ClInclude Include="ApplicationIconResource.h" />
     <ClInclude Include="Source.h" />
     <ClInclude Include="PerfLog.h" />
     <ClInclude Include="Rasterizer.h" />
@@ -383,7 +384,6 @@
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="PixelShader.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="SolidSphere.h" />
     <ClInclude Include="Sphere.h" />
@@ -403,10 +403,9 @@
     <ClInclude Include="WireframePass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="hw3d.rc" />
+    <ResourceCompile Include="ksk.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="chili.ico" />
     <Image Include="ksk3.ico" />
   </ItemGroup>
   <ItemGroup>
